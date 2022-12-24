@@ -24,7 +24,7 @@ rustycan_ui! {
         ).ok
         Button Cancel (
             style=cool_style 
-            override_spacing=(1 2 3 4))
+            override_spacing=(1 2 3 4)
         ).cancel
         Slider "Brush Size".brush_size (
             range=(1..100)
@@ -32,7 +32,7 @@ rustycan_ui! {
             override_spacing=(_,_,1x,1x)
         ).my_slider
     }
-};
+}
 ```
 
 # Goals

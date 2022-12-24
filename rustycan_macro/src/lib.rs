@@ -4,7 +4,8 @@ use proc_macro::TokenStream;
 pub fn rustycan_ui(input: TokenStream) -> TokenStream {
     // let parsed = syn::parse(tokens);
     dbg!(input.to_string());
-    todo!();
+    // TokenStream::new()
+    todo!()
 }
 
 #[cfg(test)]
