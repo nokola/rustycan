@@ -1,8 +1,10 @@
 use proc_macro::TokenStream;
 
 #[proc_macro]
-pub fn parse(input: TokenStream) -> TokenStream {
-    input
+pub fn rustycan_ui(input: TokenStream) -> TokenStream {
+    // let parsed = syn::parse(tokens);
+    dbg!(input.to_string());
+    todo!();
 }
 
 #[cfg(test)]
