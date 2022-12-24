@@ -1,6 +1,7 @@
 [workspace]
 members = [
-    "rustycan",
+    "rustycan", # main UI library
+    "rustycan_parse", # proc macro
 ]
 
 # Uncomment for small builds
