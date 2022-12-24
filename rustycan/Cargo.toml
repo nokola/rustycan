@@ -1,0 +1,31 @@
+[package]
+authors = ['Nokola']
+name = "rustycan"
+version = "0.1.0"
+edition = "2021"
+description = "Powerful UI framework for games and apps."
+license = "MIT OR Apache-2.0"
+# documentation = "TODO, leave empty for default docs.rs"
+homepage = "https://github.com/nokola/rustycan/"
+repository = "https://github.com/nokola/rustycan/"
+categories = ["UI", "graphics", "rendering"]
+keywords = ["gamedev", "graphics", "antialiased", "UI", "cross-platform"]
+readme = "../README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+
+[package.metadata.android]
+# Specifies the array of targets to build for.
+# Defaults to "armv7-linux-androideabi", "aarch64-linux-android", "i686-linux-android".
+build_targets = ["armv7-linux-androideabi"]
+fullscreen = true
+opengles_version_major = 2
+opengles_version_minor = 0
+package_name = "nokola.app.drawaa"
+
+[package.metadata.android.application_attributes]
+"android:debuggable" = "true"
+"android:hardwareAccelerated" = "true"

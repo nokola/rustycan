@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "rustycan",
+]
+
+# Uncomment for small builds
+[profile.release]
+lto = "thin"
