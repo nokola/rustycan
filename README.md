@@ -10,7 +10,7 @@ It features a variety of advanced effects, including blur, frosted glass, shader
 # Demo
 TODO
 
-```cs
+```pug
 rustycan_ui! {
     Grid(
         cols={sizes=(50 2x 1x) between=40 before_first=10 after_last=20} 
