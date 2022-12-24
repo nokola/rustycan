@@ -8,7 +8,7 @@ license = "MIT OR Apache-2.0"
 # documentation = "TODO, leave empty for default docs.rs"
 homepage = "https://github.com/nokola/rustycan/"
 repository = "https://github.com/nokola/rustycan/"
-categories = ["UI", "graphics", "rendering"]
+categories = ["gui", "graphics", "rendering"]
 keywords = ["gamedev", "graphics", "antialiased", "UI", "cross-platform"]
 readme = "../README.md"
 
