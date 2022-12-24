@@ -1,5 +1,7 @@
 # rustycan
 UI framework for Rust with focus on developer ergonomics for retained or immediate-like mode. 
+![Rustycan: the UI framework that can](img/rustycan.jpg)
+![Rustycan: the UI framework that can](img/rustycan.jpg)
 
 # Demo
 TODO
