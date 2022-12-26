@@ -52,32 +52,6 @@ rustycan_ui! {
 }
 ```
 
-Older syntax (likely will not use it, leaving for temporary reference)
-```pug
-rustycan_ui! {
-    Grid(
-        cols={sizes=(50 2x 1x) between=40 before_first=10 after_last=20} 
-        rows=1x
-        children_default_spacing=(1 1 1 2)) 
-    {
-        Button Ok (
-            style=cool_style 
-            override_spacing=(10 10 10 10) 
-            parent.rows=(1..2) parent.cols=1
-        ).ok
-        Button Cancel (
-            style=cool_style 
-            override_spacing=(1 2 3 4)
-        ).cancel
-        Slider "Brush Size".brush_size (
-            range=(1..100)
-            value=50
-            override_spacing=(_,_,1x,1x)
-        ).my_slider
-    }
-}
-```
-
 # Why Rustycan?
 Rustycan UI aims to be a pleasure to use:
  - easy to adding controls to GUIs. Easy layout using intuitive algorithm from [morphorm](https://github.com/vizia/morphorm)
