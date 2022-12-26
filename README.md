@@ -57,13 +57,17 @@ Rustycan UI aims to be a pleasure to use:
  - easy to adding controls to GUIs. Easy layout using intuitive algorithm from [morphorm](https://github.com/vizia/morphorm)
  - support the "hard" scenarios like accessibility and designer preview/hot reload
  - keeping high performance, both at runtime and developer design time
+ - support for native or non-native UIs
 
-Rustycan is not locked to a specific renderer - as in, you can use the same UI code with Egui, HTML (and potentially more) renderers, which does not lock you in to a specific GUI rendering framework. This allows easy sharing of UI code between different people or switching to a different renderer in case of need (e.g. better accessibility or theming support).
+Rustycan is not locked to a specific GUI renderering framework. You can use the same UI code with Egui, HTML, and potentially more renderers. This allows easy sharing of UI code between different people or switching to a different renderer in case of need (e.g. better accessibility or theming support).
+
+Rustycan adds high-quality layout to even to immediate mode UI frameworks where layout has historically been hard.
 
 Reasons not to use Rustycan:
-- it's not ready yet
+- it's not ready yet. Unproved and single developer at the moment
 - you are happy with your current UI and see no need to switch
 - no support for your specific scenario (please contribute or open issue if so!)
+- performance is not what you expected (please open issue and/or contribute, I take performance seriously)
 
 # Goals
 
