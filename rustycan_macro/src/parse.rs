@@ -57,6 +57,7 @@ use syn::{
 /// TODO: "Ok" after elem
 /// TODO: .ok in various places
 /// TODO: empty Elem
+/// TODO: // comments
 
 pub struct Elem {
     pub name: Ident,
