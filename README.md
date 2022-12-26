@@ -1,5 +1,5 @@
 # Rustycan
-**WARNING:** this library is not usable yet and all work in progress. Expect tons of breaking changes, often.
+**WARNING: DO NOT USE YET - experimental work in progress.** Expect tons of breaking changes, often.
 
 Rustycan is a powerful UI framework for Rust, designed to make it easier than ever to create UIs and update existing UIs for games or apps. Rustycan support immediate-like and retained mode UIs. 
 

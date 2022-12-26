@@ -1,7 +1,7 @@
 [package]
 authors = ['Nokola']
 name = "rustycan"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 description = "Powerful UI framework for games and apps."
 license = "MIT OR Apache-2.0"
