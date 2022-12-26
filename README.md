@@ -15,7 +15,7 @@ TODO
 rustycan_ui! {
     Grid (
         cols={sizes=(50 2x 1x) between=40 before_first=10 after_last=20} 
-        rows=1s
+        rows=1x
         children_default_spacing=(1 1 1 2) 
       
         Button.ok "Ok" (
@@ -57,7 +57,7 @@ Older syntax (likely will not use it, leaving for temporary reference)
 rustycan_ui! {
     Grid(
         cols={sizes=(50 2x 1x) between=40 before_first=10 after_last=20} 
-        rows=1s
+        rows=1x
         children_default_spacing=(1 1 1 2)) 
     {
         Button Ok (
