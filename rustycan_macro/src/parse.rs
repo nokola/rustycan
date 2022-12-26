@@ -54,8 +54,9 @@ use syn::{
 ///          $( $propertyName:Ident = $value:PropertyValue )*
 ///     }
 /// ```
-/// TODO: "Ok" after button
+/// TODO: "Ok" after elem
 /// TODO: .ok in various places
+/// TODO: empty Elem
 
 pub struct Elem {
     pub name: Ident,
@@ -105,6 +106,16 @@ impl Parse for ElemParam {
         } else if input.peek2(token::Paren) {
             input.parse().map(ElemParam::Child)
         } else {
+            let name = input.parse::<Ident>()?; // advance to show error at correct location
+
+            // if just identifier, then its a single empty child (e.g. HorizontalLine)
+            if input.is_empty() {
+                return Ok(ElemParam::Child(Elem {
+                    name,
+                    params: Vec::new(),
+                }));
+            }
+
             Err(input.error("Expected element or property"))
         }
     }
