@@ -84,7 +84,7 @@ Rustycan UI aims to be a pleasure to use:
  - support the "hard" scenarios like accessibility and designer preview/hot reload
  - keeping high performance, both at runtime and developer design time
 
-Rustycan is not locked to a specific renderer - as in, you can use the same UI code with Egui, HTML (and potentially more) renderers, which does no lock you in to a specific GUI rendering framework. This allows easy sharing of UI code between different people or switching to a different renderer in case of need (e.g. better accessibility or theming support).
+Rustycan is not locked to a specific renderer - as in, you can use the same UI code with Egui, HTML (and potentially more) renderers, which does not lock you in to a specific GUI rendering framework. This allows easy sharing of UI code between different people or switching to a different renderer in case of need (e.g. better accessibility or theming support).
 
 Reasons not to use Rustycan:
 - it's not ready yet
