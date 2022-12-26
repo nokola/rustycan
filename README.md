@@ -42,7 +42,7 @@ rustycan_ui! {
     VertStack (
         Label "Hello world" (before=1x after=1x) // center
         HorizStack (
-            before_first=1s // right align
+            before_first=1x // right align
             between=10 
 
             Button "Ok"
@@ -96,8 +96,8 @@ rustycan_ui! {
 | Cross-platform on Android, iOS, Windows, Linux, Web | WIP |
 | Native controls support | WIP |
 
-Rustycan aims to achieve the goals above by reinventing the UI syntax and tools, while relying on existing frameworks (either low-level or other UI frameworks for rendering.)
-That enables me to focus on ergonomics instead of reinventing much of the rendering stack.
+Rustycan aims to achieve the goals above by reimplementing UI syntax and layout algorithms for developer ergonomics (ease of use), while relying on existing frameworks (either low-level or other UI frameworks) for rendering.
+That enables me to focus on ergonomics instead of reinventing the rendering stack.
 
 # License
 MIT or Apache 2
