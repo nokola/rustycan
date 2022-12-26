@@ -64,7 +64,7 @@ Rustycan is not locked to a specific GUI renderering framework. You can use the 
 Rustycan adds high-quality layout to even to immediate mode UI frameworks where layout has historically been hard.
 
 # Why Not Rustycan?
-- it's not ready yet. Unproved and single developer at the moment
+- it's not ready yet. Unproven framework and single developer at the moment
 - you are happy with your current UI and see no need to switch
 - no support for your specific scenario (please contribute or open issue if so!)
 - performance is not what you expected (please open issue and/or contribute, I take performance seriously)
