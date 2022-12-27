@@ -8,6 +8,10 @@ use crate::parse::ElemParam;
 
 #[proc_macro]
 pub fn rustycan_ui(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
+    if input.is_empty() {
+        return proc_macro::TokenStream::new();
+    }
+
     // let parsed: Result<syn::token::Type, syn::Error> = syn::parse(input);
     let parsed: Elem = parse_macro_input!(input as Elem);
     // let ident: Ident = Ident::new("asd", Span::new());
@@ -27,30 +31,19 @@ fn print_elem(elem: Elem) {
             ElemParam::Property(prop) => {
                 println!("prop {name} = {value}", name = prop.name, value = "[Expr]");
             }
-            ElemParam::Child(elem) => print_elem(elem),
+            ElemParam::ChildElem(elem) => print_elem(elem),
         }
     }
 }
-fn print(input: TokenStream) {
+fn _print(input: TokenStream) {
     for t in input {
         if let TokenTree::Group(g) = t {
             println!("{:?}: open {:?}", g.span_open(), g.delimiter());
-            print(g.stream());
+            _print(g.stream());
             println!("{:?}: close {:?}", g.span_close(), g.delimiter());
         } else {
             // t.span().unwrap().error("sdf").emit();
             println!("{:?}: {}", t.span(), t.to_string());
         }
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    // use super::*;
-
-    #[test]
-    fn it_works() {
-        // let result = add(2, 2);
-        assert_eq!(4, 4);
     }
 }

@@ -1,7 +1,7 @@
 use syn::{
     parenthesized,
     parse::{Parse, ParseStream, Result},
-    token, Expr, Ident, Token,
+    token, Expr, Ident, LitStr, Token,
 };
 
 /// Syntax of rustycan_ui! macro:
@@ -14,7 +14,7 @@ use syn::{
 ///
 /// Syntax of $Elem:
 /// ```ignore
-/// $name (
+/// $name "text"? (
 ///    $( $propertyName:Ident = $value:PropertyValue )*
 ///    $( $child:Elem )*
 /// )
@@ -54,24 +54,43 @@ use syn::{
 ///          $( $propertyName:Ident = $value:PropertyValue )*
 ///     }
 /// ```
-/// TODO: "Ok" after elem
+/// TODO: test: "Ok" after elem
 /// TODO: .ok in various places
-/// TODO: empty Elem
+/// TODO: test: empty Elem
 /// TODO: // comments
 
 pub struct Elem {
     pub name: Ident,
+    pub text: Option<LitStr>,
     pub params: Vec<ElemParam>,
 }
 
 impl Parse for Elem {
     fn parse(input: ParseStream) -> Result<Self> {
         let name: Ident = input.parse()?;
+
+        // check for "text" case, example: Button "Ok"
+        let text: Option<LitStr> = if input.peek(LitStr) {
+            Some(input.parse::<LitStr>()?)
+        } else {
+            None
+        };
+
+        // if no (, this must be the end of the element, for example: Button "Ok"
+        if !input.peek(token::Paren) {
+            return Ok(Elem {
+                name,
+                text,
+                params: Vec::new(),
+            });
+        }
+
         let content;
         parenthesized!(content in input); // parse content inside "(" and ")"
         let params: ElemParamList = content.parse()?;
         Ok(Elem {
             name,
+            text,
             params: params.0,
         })
     }
@@ -79,7 +98,7 @@ impl Parse for Elem {
 
 pub enum ElemParam {
     Property(ElemProperty),
-    Child(Elem),
+    ChildElem(Elem),
 }
 
 pub struct ElemParamList(Vec<ElemParam>);
@@ -102,17 +121,17 @@ impl Parse for ElemParamList {
 impl Parse for ElemParam {
     fn parse(input: ParseStream) -> Result<Self> {
         if input.peek2(Token![=]) {
-            // input.parse().map(ElemParam::Property)
             input.parse().map(ElemParam::Property)
-        } else if input.peek2(token::Paren) {
-            input.parse().map(ElemParam::Child)
+        } else if input.peek2(token::Paren) || input.peek2(LitStr) {
+            input.parse().map(ElemParam::ChildElem)
         } else {
             let name = input.parse::<Ident>()?; // advance to show error at correct location
 
             // if just identifier, then its a single empty child (e.g. HorizontalLine)
             if input.is_empty() {
-                return Ok(ElemParam::Child(Elem {
+                return Ok(ElemParam::ChildElem(Elem {
                     name,
+                    text: None,
                     params: Vec::new(),
                 }));
             }
