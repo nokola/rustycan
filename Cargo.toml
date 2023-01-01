@@ -1,6 +1,7 @@
 [workspace]
 members = [
   "rustycan", # main UI library
+  "rustycan_core", # core functions and traits that cannot be included in rustycan_macro since it's a proc_macro library
   "rustycan_macro", # proc macro
   "rustycan_demo", # demo project
 ]

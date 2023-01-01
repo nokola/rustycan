@@ -23,7 +23,7 @@ use syn::{
 /// TODO:
 /// Syntax for $PropertyValue:
 /// ```ignore
-///     $Size       // examples: 40 auto 1x _
+///     $Size       // examples: 40 auto 1x _ 20.._  _..60 10.._..70 10..40..70
 ///     "string"    // "hello"
 ///     $Range      // (1..10)
 ///     $List       // (10 1x 2 auto)
@@ -32,10 +32,16 @@ use syn::{
 ///
 /// Syntax for $Size:
 /// ```ignore
-///     number
-///     auto
-///     $(number)x
-///     _
+///     $number     // absolute value in logical pixels
+///     auto        // fit to content
+///     $(number)x  // fractional sizing
+///     $(number)%  // percent sizing
+///     _           // default
+///     20.._       // min
+///     _..60       // max
+///     10..50      // min and max
+///     10..1x..50  // min and max with a scale unit
+///     10..auto..50 // min and max with auto size to content
 /// ```
 ///
 /// Syntax for $Range:
@@ -54,10 +60,25 @@ use syn::{
 ///          $( $propertyName:Ident = $value:PropertyValue )*
 ///     }
 /// ```
-/// TODO: test: "Ok" after elem
+/// TODO: TEST: "Ok" after elem
 /// TODO: .ok in various places
-/// TODO: test: empty Elem
+/// TODO: TEST: empty Elem
 /// TODO: // comments
+
+pub struct UiInfo {
+    /// Name of identifier to use for ui calls, usually "ui". For egui, the calls may look like `ui.label(...)`
+    pub ui_name: Ident,
+    pub root: Elem,
+}
+
+impl Parse for UiInfo {
+    fn parse(input: ParseStream) -> Result<Self> {
+        let ui_name: Ident = input.parse()?;
+        let root = input.parse::<Elem>()?;
+
+        Ok(UiInfo { ui_name, root })
+    }
+}
 
 pub struct Elem {
     pub name: Ident,

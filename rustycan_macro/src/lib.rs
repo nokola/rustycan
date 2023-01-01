@@ -1,7 +1,8 @@
 mod parse;
 
-use parse::Elem;
+use parse::{Elem, UiInfo};
 use proc_macro2::{TokenStream, TokenTree};
+use quote::quote;
 use syn::parse_macro_input;
 
 use crate::parse::ElemParam;
@@ -13,14 +14,19 @@ pub fn rustycan_ui(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     }
 
     // let parsed: Result<syn::token::Type, syn::Error> = syn::parse(input);
-    let parsed: Elem = parse_macro_input!(input as Elem);
+    let parsed: UiInfo = parse_macro_input!(input as UiInfo);
+    let ui = parsed.ui_name;
     // let ident: Ident = Ident::new("asd", Span::new());
     // ident.span().unwrap().error("hoho").emit();
 
     // let input = TokenStream::from(input); // convert to proc_macro2's TokenStream to allow using Ident in quote
     // print(input.into());
-    print_elem(parsed);
-    proc_macro::TokenStream::new()
+    print_elem(parsed.root);
+    let tokens = quote! {
+        #ui.label("hoho");
+    };
+    tokens.into()
+    // proc_macro::TokenStream::new()
     // todo!()
 }
 
@@ -35,6 +41,7 @@ fn print_elem(elem: Elem) {
         }
     }
 }
+
 fn _print(input: TokenStream) {
     for t in input {
         if let TokenTree::Group(g) = t {
