@@ -91,6 +91,7 @@ Rustycan adds high-quality layout to even to immediate mode UI frameworks where 
 | Themes | WIP |
 | Cross-platform on Android, iOS, Windows, Linux, Web | WIP |
 | Native controls support | WIP |
+| Contstraints to animate controls with other controls | WIP |
 
 Rustycan aims to achieve the goals above by reimplementing UI syntax and layout algorithms for developer ergonomics (ease of use), while relying on existing frameworks (either low-level or other UI frameworks) for rendering.
 That enables me to focus on ergonomics instead of reinventing the rendering stack.
